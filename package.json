@@ -1,0 +1,16 @@
+{
+  "name": "vanilla-starter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3",
+    "postcss": "^8.3",
+    "tailwindcss": "^2.2",
+    "vite": "^2.5"
+  }
+}
