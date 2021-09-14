@@ -1,6 +1,4 @@
 import './style.css'
-//set variable with empty string, then update it
-// get value on submit - wrap button on a form
 let searchResult = ''
 
 const searchResultInput = document.querySelector('input');
@@ -13,7 +11,7 @@ const isLetter = (str) => {
   return str.length === 1 && str.match(/[a-z]/i);
 }
 
-const sendData = () => {
+const sendData = async () => {
 
   const firstChar = searchResult.charAt(0);
   const initialUrl = 'https://geo.ipify.org/api/v1?apiKey=at_MtMdip93KaiHmQuJC6khzvk5SmPkY';
@@ -31,23 +29,31 @@ const sendData = () => {
   const fullUrl = `${initialUrl}${inputParam}`;
 
   // fetch data from API
-  const apiData = fetch(`${fullUrl}`)
-  .then(response => response.json())
-  .then(data => data);
-  console.log(searchResult);
-  console.log(apiData);
+  // using await to get data back rather than a Promise
+  const response = await fetch(`${fullUrl}`)
+  const apiData = await response.json()
+  // .then(response => response.json())
+  // .then(data => data);
+  console.log(apiData.location);
+  updateMap(apiData.location.lat, apiData.location.lng);
 
   // check response of API
 
   // show result of API on map
+  // console.log(apiData.location);
 }
 
-const mymap = L.map('mapid').setView([51.505, -0.09], 13);
+const mymap = L.map('mapid');
+
+const updateMap = (lat, long) => {
+  mymap.setView([lat, long], 13);
+}
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
 
+updateMap(51.505, -0.09);
 // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 //     maxZoom: 18,
