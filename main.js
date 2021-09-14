@@ -8,30 +8,35 @@ searchResultInput.addEventListener('input', (inputEvent)  => {
   searchResult = inputEvent.target.value;
 })
 
+// check if input result has letter or number, check first character
 const isLetter = (str) => {
   return str.length === 1 && str.match(/[a-z]/i);
 }
 
 const sendData = () => {
-  // send search result to API
-    const apiData = fetch(`https://geo.ipify.org/api/v1?apiKey=at_MtMdip93KaiHmQuJC6khzvk5SmPkY&ipAddress=${searchResult}`)
-    .then(response => response.json())
-    .then(data => data);
-    console.log(searchResult);
-    console.log(apiData);
-
-  // check if input result has letter or number, check first character
 
   const firstChar = searchResult.charAt(0);
+  const initialUrl = 'https://geo.ipify.org/api/v1?apiKey=at_MtMdip93KaiHmQuJC6khzvk5SmPkY';
+  let inputParam = '';
 
   if (isLetter(firstChar)){
-    console.log('is letter')
+    // if string - add domain parameter
+    inputParam = `&domain=${searchResult}`;
   } else {
-    console.log('number')
+    // if number - add ipAddress parameter
+    inputParam = `&ipAddress=${searchResult}`;
   }
 
-  // if number - add ipAddress parameter
-  // if string - add domain parameter
+  // build url
+  const fullUrl = `${initialUrl}${inputParam}`;
+
+  // fetch data from API
+  const apiData = fetch(`${fullUrl}`)
+  .then(response => response.json())
+  .then(data => data);
+  console.log(searchResult);
+  console.log(apiData);
+
   // check response of API
 
   // show result of API on map
