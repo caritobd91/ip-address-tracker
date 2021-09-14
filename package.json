@@ -12,5 +12,8 @@
     "postcss": "^8.3",
     "tailwindcss": "^2.2.14",
     "vite": "^2.5"
+  },
+  "dependencies": {
+    "leaflet": "^1.7.1"
   }
 }
