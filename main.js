@@ -17,7 +17,10 @@ const isLetter = (str) => {
 }
 
 const updateData = async(data) => {
-  // TODO: update four fields
+  document.getElementById('searchResultIp').innerHTML = data.ip;
+  document.getElementById('searchResultLocation').innerHTML = `${data.location.city}, ${data.location.region} ${data.location.postalCode}`;
+  document.getElementById('searchResultTimeZone').innerHTML = `UTC ${data.location.timezone}`;
+  document.getElementById('searchResultIsp').innerHTML = data.isp;
 }
 
 const sendData = async () => {
@@ -40,6 +43,7 @@ const sendData = async () => {
   const response = await fetch(`${fullUrl}`)
   const apiData = await response.json()
 
+  updateData(apiData);
   updateMap(apiData.location.lat, apiData.location.lng);
 }
 
@@ -65,6 +69,9 @@ if (navigator.geolocation) {
   updateMap(51.505, -0.09);
 }
 
+const response = await fetch(`${baseUrl}`)
+const responseData = await response.json();
+updateData(responseData);
 
 const form = document.getElementById('form');
 form.addEventListener('submit', (submitEvent) => {

@@ -12,47 +12,47 @@
     crossorigin=""></script>
   </head>
   <body>
-    <div class="bg-hero-pattern h-full w-full bg-cover">
-      <div class="mx-auto max-w-xl text-center">
-        <h1 class="py-10 text-center text-white text-3xl font-semibold">IP Address Tracker</h1>
+    <main class="relative">
+      <div class="bg-hero-pattern h-full w-full bg-cover z-0 py-10">
+        <div class="mx-auto max-w-xl text-center pb-10">
+          <h1 class="py-10 text-center text-white text-3xl font-semibold">IP Address Tracker</h1>
 
-        <form id="form" class="pb-10">
-          <input type="text" placeholder="Search for any IP address or domain" class="w-80 rounded-lg py-2 px-2 placeholder-gray-300 w-ful">
-          <button class="bg-black p-3.5 rounded-lg">
-            <img src="/img/icon-arrow.svg">
-          </button>
-        </form>
+          <form id="form" class="pb-10">
+            <input type="text" placeholder="Search for any IP address or domain" class="w-80 rounded-lg py-2 px-2 placeholder-gray-300 w-ful">
+            <button class="bg-black p-3.5 rounded-lg">
+              <img src="/img/icon-arrow.svg">
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
 
-    <div class="bg-white h-40 w-80 rounded-lg mx-auto flex justify-between">
-      <div>
-        <h2>Ip Address</h2>
-        <div id="searchResultIp"></div>
+      <div class="bg-white h-40 w-full max-w-5xl rounded-lg mx-auto flex justify-between absolute top-60 z-10 right-0 left-0 p-10">
+        <div>
+          <h2 class="text-gray-500 uppercase">Ip Address</h2>
+          <div id="searchResultIp" class="text-xl font-bold"></div>
+        </div>
+        <div>
+          <h2 class="text-gray-500 uppercase">
+            Location
+          </h2>
+          <div id="searchResultLocation" class="text-xl font-bold"></div>
+        </div>
+        <div>
+          <h2 class="text-gray-500 uppercase">
+            Time Zone
+          </h2>
+          <div id="searchResultTimeZone" class="text-xl font-bold"></div>
+        </div>
+        <div>
+          <h2 class="text-gray-500 uppercase">
+            ISP
+          </h2>
+          <div id="searchResultIsp" class="text-xl font-bold"></div>
+        </div>
       </div>
-      <div>
-        <h2>
-          Location
-        </h2>
-        <div id="searchResultLocation"></div>
-      </div>
-      <div>
-        <h2>
-          Time Zone
-        </h2>
-        <div id="searchResultTimeZone"></div>
-      </div>
-      <div>
-        <h2>
-          ISP
-        </h2>
-        <div id="searchResultIsp"></div>
-      </div>
-    </div>
 
-    <div id="mapid" class="h-96 w-full">
-      Map
-    </div>
-    <script type="module" src="/main.js"></script>
+      <div id="mapid" class="h-screen w-full z-0"></div>
+      <script type="module" src="/main.js"></script>
+  </main>
   </body>
 </html>
