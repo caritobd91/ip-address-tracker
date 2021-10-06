@@ -18,7 +18,7 @@ const isLetter = (str) => {
 
 const updateData = async(data) => {
   document.getElementById('searchResultIp').innerHTML = data.ip;
-  document.getElementById('searchResultLocation').innerHTML = `${data.location.city}, ${data.location.region} ${data.location.postalCode}`;
+  document.getElementById('searchResultLocation').innerHTML = `${data.location.city}, <br />${data.location.region} ${data.location.postalCode}`;
   document.getElementById('searchResultTimeZone').innerHTML = `UTC ${data.location.timezone}`;
   document.getElementById('searchResultIsp').innerHTML = data.isp;
 }
@@ -50,6 +50,7 @@ const sendData = async () => {
 const mymap = L.map('mapid');
 
 const updateMap = (lat, long) => {
+  L.marker([lat, long]).addTo(mymap);
   mymap.setView([lat, long], 13);
 }
 
