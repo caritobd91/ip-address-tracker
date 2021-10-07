@@ -47,7 +47,7 @@ const sendData = async () => {
   updateMap(apiData.location.lat, apiData.location.lng);
 }
 
-const mymap = L.map('mapid');
+const mymap = L.map('mapid', { zoomControl: false });
 
 const updateMap = (lat, long) => {
   L.marker([lat, long]).addTo(mymap);
