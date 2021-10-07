@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla Starter</title>
+    <title>Ip Address Tracker</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -18,37 +18,37 @@
           <h1 class="py-10 text-center text-white text-3xl font-semibold">IP Address Tracker</h1>
 
           <form id="form" class="pb-10 flex flex-row justify-center">
-            <input type="text" placeholder="Search for any IP address or domain" class="w-3/4 rounded-lg rounded-r-none p-3 placeholder-gray-300 w-ful">
-            <button class="bg-black p-3.5 rounded-lg rounded-l-none ">
+            <input type="text" placeholder="Search for any IP address or domain" class="max-w-xs md:w-3/4 rounded-lg rounded-r-none pl-6 pr-8 py-3 placeholder-gray-300 w-ful">
+            <button class="bg-black p-3.5 rounded-lg rounded-l-none cursor-pointer">
               <img src="/img/icon-arrow.svg">
             </button>
           </form>
         </div>
       </div>
 
-      <div class="bg-white h-40 w-full max-w-6xl rounded-lg mx-auto absolute top-60 z-10 right-0 left-0 p-10">
-        <div class="divide-x-2 divide-solid divide-grey-500 flex justify-between">
-          <div class="px-6 w-1/4">
-            <h2 class="text-gray-500 uppercase pb-2 font-bold text-xs tracking-wider">Ip Address</h2>
-            <div id="searchResultIp" class="text-xl font-bold"></div>
+      <div class="bg-white h-auto md:h-40 w-full max-w-xs md:max-w-6xl rounded-lg mx-auto absolute top-60 z-10 right-0 left-0 p-6 md:p-10">
+        <div class="text-center md:text-left md:divide-x-2 md:divide-solid md:divide-grey-500 flex md:flex-row flex-col justify-between">
+          <div class="px-6 md:w-1/4">
+            <h2 class="text-gray-500 uppercase pb-2 font-bold text-xs tracking-wider ">Ip Address</h2>
+            <div id="searchResultIp" class="text-xl font-bold pb-5 md:pd-0"></div>
           </div>
-          <div class="px-6 w-1/4">
+          <div class="px-6 md:w-1/4">
             <h2 class="text-gray-500 uppercase pb-2 font-bold text-xs tracking-wider">
               Location
             </h2>
-            <div id="searchResultLocation" class="text-xl font-bold"></div>
+            <div id="searchResultLocation" class="text-xl font-bold pb-5 md:pd-0"></div>
           </div>
-          <div class="px-6 w-1/4">
+          <div class="px-6 md:w-1/4">
             <h2 class="text-gray-500 uppercase pb-2 font-bold text-xs tracking-wider">
               Time Zone
             </h2>
-            <div id="searchResultTimeZone" class="text-xl font-bold"></div>
+            <div id="searchResultTimeZone" class="text-xl font-bold pb-5 md:pd-0"></div>
           </div>
-          <div class="px-6 w-1/4">
+          <div class="px-6 md:w-1/4">
             <h2 class="text-gray-500 uppercase pb-2 font-bold text-xs tracking-wider">
               ISP
             </h2>
-            <div id="searchResultIsp" class="text-xl font-bold"></div>
+            <div id="searchResultIsp" class="text-xl font-bold pb-5 md:pd-0"></div>
           </div>
       </div>
       </div>
