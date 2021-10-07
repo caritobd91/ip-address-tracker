@@ -8,17 +8,83 @@ searchResultInput.addEventListener('input', (inputEvent)  => {
   searchResult = inputEvent.target.value;
 })
 
-// docoument.getElementById('searchResult').innerHTML = searchResultInput;
-
+// create Map with key-value pairs for each state
+const statesMap = new Map([
+  ['Alabama', 'AL'],
+  ['Alaska', 'AK'],
+  ['American Samoa', 'AS'],
+  ['Arizona', 'AZ'],
+  ['Arkansas', 'AR'],
+  ['Armed Forces Americas', 'AA'],
+  ['Armed Forces Europe', 'AE'],
+  ['Armed Forces Pacific', 'AP'],
+  ['California', 'CA'],
+  ['Colorado', 'CO'],
+  ['Connecticut', 'CT'],
+  ['Delaware', 'DE'],
+  ['District Of Columbia', 'DC'],
+  ['Florida', 'FL'],
+  ['Georgia', 'GA'],
+  ['Guam', 'GU'],
+  ['Hawaii', 'HI'],
+  ['Idaho', 'ID'],
+  ['Illinois', 'IL'],
+  ['Indiana', 'IN'],
+  ['Iowa', 'IA'],
+  ['Kansas', 'KS'],
+  ['Kentucky', 'KY'],
+  ['Louisiana', 'LA'],
+  ['Maine', 'ME'],
+  ['Marshall Islands', 'MH'],
+  ['Maryland', 'MD'],
+  ['Massachusetts', 'MA'],
+  ['Michigan', 'MI'],
+  ['Minnesota', 'MN'],
+  ['Mississippi', 'MS'],
+  ['Missouri', 'MO'],
+  ['Montana', 'MT'],
+  ['Nebraska', 'NE'],
+  ['Nevada', 'NV'],
+  ['New Hampshire', 'NH'],
+  ['New Jersey', 'NJ'],
+  ['New Mexico', 'NM'],
+  ['New York', 'NY'],
+  ['North Carolina', 'NC'],
+  ['North Dakota', 'ND'],
+  ['Northern Mariana Islands', 'NP'],
+  ['Ohio', 'OH'],
+  ['Oklahoma', 'OK'],
+  ['Oregon', 'OR'],
+  ['Pennsylvania', 'PA'],
+  ['Puerto Rico', 'PR'],
+  ['Rhode Island', 'RI'],
+  ['South Carolina', 'SC'],
+  ['South Dakota', 'SD'],
+  ['Tennessee', 'TN'],
+  ['Texas', 'TX'],
+  ['US Virgin Islands', 'VI'],
+  ['Utah', 'UT'],
+  ['Vermont', 'VT'],
+  ['Virginia', 'VA'],
+  ['Washington', 'WA'],
+  ['West Virginia', 'WV'],
+  ['Wisconsin', 'WI'],
+  ['Wyoming', 'WY'],
+]);
 
 // check if input result has letter or number, check first character
 const isLetter = (str) => {
   return str.length === 1 && str.match(/[a-z]/i);
 }
 
+// pass in region from data, finds it in Map and returns the value
+const formatRegion = (state) => {
+  return statesMap.get(state)
+}
+
 const updateData = async(data) => {
   document.getElementById('searchResultIp').innerHTML = data.ip;
-  document.getElementById('searchResultLocation').innerHTML = `${data.location.city}, <br />${data.location.region} ${data.location.postalCode}`;
+  document.getElementById('searchResultLocation').innerHTML = `${data.location.city}, ${formatRegion(data.location.region)} </br>${data.location.postalCode}`;
   document.getElementById('searchResultTimeZone').innerHTML = `UTC ${data.location.timezone}`;
   document.getElementById('searchResultIsp').innerHTML = data.isp;
 }
